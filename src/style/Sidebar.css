@@ -1,0 +1,519 @@
+/* Sidebar principal */
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar colapsada */
+.sidebar.collapsed {
+  width: 100px;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+.sidebar.collapsed .sidebar-title,
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .dropdown-arrow {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding: 16px 0;
+  margin: 4px 8px;
+}
+
+.sidebar.collapsed .nav-icon {
+  margin-left: 76px !important;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar.collapsed .comites-icon {
+  margin-left: 72px !important;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar.collapsed .comites-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar.collapsed .logout-icon {
+  margin-left: 60px !important;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header de la sidebar */
+.sidebar-header {
+  padding: 20px 24px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.sidebar-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sidebar-logo-container:hover .sidebar-logo {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar.collapsed .sidebar-logo-container {
+  display: flex;
+  margin-bottom: 0;
+  padding: 12px 0;
+}
+
+.sidebar.collapsed .sidebar-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.sidebar-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar.collapsed .sidebar-title {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.toggle-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar.collapsed .sidebar-toggle:hover {
+  transform: translate(50%, -50%) scale(1.1);
+}
+
+.sidebar-toggle:hover .toggle-logo {
+  transform: scale(1.1);
+}
+
+.sidebar-toggle:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.sidebar.collapsed .sidebar-toggle:active {
+  transform: translate(50%, -50%) scale(0.95);
+}
+
+/* Icono de comités personalizado */
+.comites-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comites-icon svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Navegación */
+.sidebar-nav {
+  padding: 24px 0;
+}
+
+/* Items de navegación */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin: 4px 16px;
+  border-radius: 12px;
+}
+
+.sidebar.collapsed .nav-item {
+  margin: 4px 8px;
+}
+
+.nav-item:hover {
+/*   background: rgba(245, 158, 11, 0.1); */
+  transform: translateX(8px);
+}
+
+.sidebar.collapsed .nav-item:hover {
+  transform: scale(1.1);
+}
+
+/* .nav-item.active{
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+} */
+
+.member-item.active .nav-header{
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  position: relative;
+}
+
+/* Comités seleccionado cuando una de sus opciones está activa */
+.comites-item.active .nav-header {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  position: relative;
+}
+
+.comites-item.active .nav-header::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.sidebar.collapsed .nav-item.active::before {
+  left: -8px;
+}
+
+/* Iconos de navegación */
+.nav-icon {
+  font-size: 20px;
+  margin-right: 16px;
+  width: 24px;
+  text-align: center;
+  transition: margin 0.3s ease;
+}
+
+.sidebar.collapsed .nav-icon {
+  margin-right: 0;
+  font-size: 20px;
+}
+
+/* Texto de navegación */
+.nav-text {
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar.collapsed .nav-text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Item de comités especial */
+.comites-item {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  margin: 4px 16px;
+}
+
+.sidebar.collapsed .comites-item {
+  margin: 4px 8px;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.sidebar.collapsed .nav-header {
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.nav-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Flecha desplegable */
+.dropdown-arrow {
+  margin-left: auto;
+  transition: transform 0.8s ease;
+  color: white;
+  font-size: 16px;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(360deg);
+}
+
+.dropdown-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar.collapsed .dropdown-arrow {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-item.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Submenú */
+.submenu {
+  background: rgba(0, 0, 0, 0.2);
+  margin: 8px 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+}
+
+.sidebar.collapsed .submenu {
+  display: none;
+}
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px 12px 48px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.submenu-item:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: white;
+}
+
+.submenu-item.active {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.submenu-icon {
+  font-size: 16px;
+  margin-right: 12px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Item de logout */
+.logout-item {
+  margin-top: auto;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  
+}
+
+.logout-item:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+  }
+  
+  .sidebar.collapsed {
+    transform: translateX(0);
+    width: 280px;
+  }
+  
+  .sidebar.collapsed .sidebar-title,
+  .sidebar.collapsed .nav-text,
+  .sidebar.collapsed .dropdown-arrow {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .sidebar.collapsed .nav-item {
+    justify-content: flex-start;
+    padding: 16px 24px;
+  }
+  
+  .sidebar.collapsed .nav-icon {
+    margin-right: 16px;
+    font-size: 20px;
+  }
+  
+  .sidebar.collapsed .sidebar-header {
+    padding: 32px 24px 24px;
+  }
+  
+  .sidebar.collapsed .sidebar-toggle {
+    right: 16px;
+    transform: translateY(-50%);
+  }
+  
+  .sidebar.collapsed .sidebar-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .sidebar.collapsed .comites-item {
+    margin: 4px 16px;
+  }
+  
+  .sidebar.collapsed .submenu {
+    display: block;
+  }
+} 
+
+/* Comités seleccionado cuando una de sus opciones está activa */
+.comites-item.active .nav-header::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.comites-item.active .nav-text {
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.comites-item.active .comites-icon svg {
+  filter: brightness(1.1);
+}
+
+/* Submenú item activo */
+.submenu-item.active {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  color: #fbbf24;
+  font-weight: 600;
+  position: relative;
+}
+
+.submenu-item.active::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.submenu-item.active .submenu-icon {
+  color: #fbbf24;
+} 

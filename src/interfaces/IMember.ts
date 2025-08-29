@@ -1,13 +1,14 @@
 export interface IMember {
     id: number;
     nombre: string;
+    apellido: string;
     cedula: string;
     telefono: string;
     email: string;
     direccion: string;
     sector: string;
     fecha_ingreso: Date;
-    estado: boolean;
-    comite: number;
-    rol: number;
+    activo: boolean;
+    comite_id: number;
+    rol_id: number;
 }

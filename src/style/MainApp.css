@@ -1,0 +1,105 @@
+/* Main App Container */
+.main-app {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  background: #f8fafc;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+  overflow: hidden;
+}
+
+/* Content con sidebar colapsada */
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+}
+
+/* Content Placeholder */
+.content-placeholder {
+  padding: 40px 24px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.content-placeholder h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 16px;
+}
+
+.content-placeholder p {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Overlay para móvil */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 280px;
+  }
+  
+  .main-content.sidebar-collapsed {
+    margin-left: 80px;
+  }
+  
+  .content-placeholder {
+    padding: 32px 20px;
+  }
+  
+  .content-placeholder h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .main-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+  
+  .content-placeholder {
+    padding: 24px 16px;
+  }
+  
+  .content-placeholder h1 {
+    font-size: 24px;
+  }
+  
+  .content-placeholder p {
+    font-size: 14px;
+  }
+} 
