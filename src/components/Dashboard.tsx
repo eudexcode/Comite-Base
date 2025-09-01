@@ -142,9 +142,70 @@ export function Dashboard({ userCedula }: DashboardProps) {
   if (isLoading) {
     return (
       <div className="dashboard">
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Cargando información...</p>
+        {/* Skeleton del Dashboard usando Tailwind */}
+        <div className="animate-wave">
+          {/* Header skeleton */}
+          <div className="text-center mb-8">
+            <div className="w-[300px] h-8 bg-gray-200 rounded-lg mx-auto mb-2"></div>
+            <div className="w-[200px] h-4 bg-gray-200 rounded-md mx-auto"></div>
+          </div>
+
+          {/* User info card skeleton */}
+          <div className="bg-white rounded-2xl p-8 mb-6 shadow-md flex flex-col lg:flex-row justify-between items-start gap-5">
+            <div className="flex items-start gap-6 mt-2.5">
+              <div className="w-20 h-20 bg-gray-200 rounded-full flex-shrink-0"></div>
+              <div className="flex flex-col gap-3">
+                <div className="w-[200px] h-6 bg-gray-200 rounded-md"></div>
+                <div className="w-[100px] h-5 bg-gray-200 rounded-full"></div>
+              </div>
+            </div>
+            <div className="mt-0 pt-4">
+              <div className="w-40 h-12 bg-gray-200 rounded-full"></div>
+            </div>
+          </div>
+
+          {/* User fields card skeleton */}
+          <div className="bg-white rounded-2xl p-6 mb-6 shadow-md">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="flex flex-col gap-2">
+                  <div className="w-20 h-3.5 bg-gray-200 rounded"></div>
+                  <div className="w-full h-12 bg-gray-200 rounded-lg"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats grid skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="bg-white rounded-xl p-5 shadow-md flex items-center gap-4">
+                <div className="w-14 h-14 bg-gray-200 rounded-xl flex-shrink-0"></div>
+                <div className="flex flex-col gap-2 flex-1">
+                  <div className="w-[120px] h-4 bg-gray-200 rounded"></div>
+                  <div className="w-[60px] h-7 bg-gray-200 rounded-md"></div>
+                  <div className="w-[100px] h-3.5 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Recent activity skeleton */}
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <div className="w-[180px] h-5 bg-gray-200 rounded-md mb-5"></div>
+            <div className="flex flex-col gap-4">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="w-10 h-10 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                  <div className="flex flex-col gap-2 flex-1">
+                    <div className="w-[200px] h-3.5 bg-gray-200 rounded"></div>
+                    <div className="w-[250px] h-[13px] bg-gray-200 rounded"></div>
+                    <div className="w-[100px] h-3 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -166,10 +227,70 @@ export function Dashboard({ userCedula }: DashboardProps) {
   if (!userInfo) {
     return (
       <div className="dashboard">
-        <div className="error-container">
-          <div className="error-icon">❌</div>
-          <h2>Usuario no encontrado</h2>
-          <p>No se pudo encontrar la información del usuario logueado.</p>
+        {/* Skeleton para cuando no hay datos del usuario */}
+        <div className="animate-wave">
+          {/* Header skeleton */}
+          <div className="text-center mb-[200px]">
+            <div className="w-[300px] h-8 bg-gray-200 rounded-lg mx-auto mb-2"></div>
+            <div className="w-[200px] h-4 bg-gray-200 rounded-md mx-auto"></div>
+          </div>
+
+          {/* User info card skeleton */}
+          <div className="bg-white rounded-2xl p-8 mb-6 shadow-md flex justify-between items-start">
+            <div className="flex items-start gap-6 mt-2.5">
+              <div className="w-20 h-20 bg-gray-200 rounded-full flex-shrink-0"></div>
+              <div className="flex flex-col gap-3">
+                <div className="w-[200px] h-6 bg-gray-200 rounded-md"></div>
+                <div className="w-[100px] h-5 bg-gray-200 rounded-full"></div>
+              </div>
+            </div>
+            <div className="mt-0 pt-4">
+              <div className="w-40 h-12 bg-gray-200 rounded-full"></div>
+            </div>
+          </div>
+
+          {/* User fields card skeleton */}
+          <div className="bg-white rounded-2xl p-6 mb-6 shadow-md">
+            <div className="grid grid-cols-3 gap-5">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="flex flex-col gap-2">
+                  <div className="w-20 h-3.5 bg-gray-200 rounded"></div>
+                  <div className="w-full h-12 bg-gray-200 rounded-lg"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats grid skeleton */}
+          <div className="grid grid-cols-4 gap-5 mb-6">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="bg-white rounded-xl p-5 shadow-md flex items-center gap-4">
+                <div className="w-14 h-14 bg-gray-200 rounded-xl flex-shrink-0"></div>
+                <div className="flex flex-col gap-2 flex-1">
+                  <div className="w-[120px] h-4 bg-gray-200 rounded"></div>
+                  <div className="w-[60px] h-7 bg-gray-200 rounded-md"></div>
+                  <div className="w-[100px] h-3.5 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Recent activity skeleton */}
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <div className="w-[180px] h-5 bg-gray-200 rounded-md mb-5"></div>
+            <div className="flex flex-col gap-4">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="w-10 h-10 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                  <div className="flex flex-col gap-2 flex-1">
+                    <div className="w-[200px] h-3.5 bg-gray-200 rounded"></div>
+                    <div className="w-[250px] h-[13px] bg-gray-200 rounded"></div>
+                    <div className="w-[100px] h-3 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );

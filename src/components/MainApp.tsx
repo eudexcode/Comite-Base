@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Sidebar } from "./Sidebar";
 import { Dashboard } from "./Dashboard";
+import { MiComite } from "./MiComite";
 import "../style/MainApp.css";
 
 interface LoggedUser {
   cedula: string;
   nombre: string;
+  comite_id: number;
 }
 
 interface MainAppProps {
@@ -39,8 +41,6 @@ export function MainApp({ initialUser }: MainAppProps) {
 
   // Usar el usuario inicial pasado como prop (solo si cambia)
   useEffect(() => {
-    console.log("MainApp - initialUser recibido:", initialUser);
-    console.log("MainApp - loggedUser actual:", loggedUser);
     
     if (initialUser && (!loggedUser || loggedUser.cedula !== initialUser.cedula)) {
       console.log("MainApp - Actualizando loggedUser con:", initialUser);
@@ -50,7 +50,6 @@ export function MainApp({ initialUser }: MainAppProps) {
 
   const handleNavigation = (route: string) => {
     setActiveRoute(route);
-    console.log("Navegando a:", route);
     
     // En móvil, colapsar sidebar después de navegar
     if (window.innerWidth <= 768) {
@@ -65,7 +64,6 @@ export function MainApp({ initialUser }: MainAppProps) {
     // Limpiar estado
     setIsLoggedIn(false);
     setLoggedUser(null);
-    console.log("Usuario deslogueado");
     
     // Redirigir al login
     window.location.href = "/";
@@ -76,19 +74,12 @@ export function MainApp({ initialUser }: MainAppProps) {
   };
 
   const renderContent = () => {
-    console.log("MainApp - renderContent - loggedUser:", loggedUser);
-    console.log("MainApp - renderContent - userCedula a pasar:", loggedUser?.cedula);
     
     switch (activeRoute) {
       case "dashboard":
         return <Dashboard userCedula={loggedUser?.cedula} />;
       case "comites-mi-comite":
-        return (
-          <div className="content-placeholder">
-            <h1>Mi Comité</h1>
-            <p>Aquí se mostrará la información del comité al que perteneces.</p>
-          </div>
-        );
+        return <MiComite comiteId={loggedUser?.comite_id} />;
       case "comites-todos":
         return (
           <div className="content-placeholder">

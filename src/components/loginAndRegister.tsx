@@ -35,7 +35,7 @@ export function LoginAndRegister() {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loggedUser, setLoggedUser] = useState<{ cedula: string; nombre: string } | null>(null);
+  const [loggedUser, setLoggedUser] = useState<{ cedula: string; nombre: string; comite_id: number } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Verificar si hay una sesión activa al cargar el componente
@@ -340,7 +340,8 @@ export function LoginAndRegister() {
         // Crear objeto de usuario para guardar
         const userToSave = { 
           cedula: memberData.cedula, 
-          nombre: memberData.nombre 
+          nombre: memberData.nombre,
+          comite_id: memberData.comite_id
         };
         
         // Guardar en localStorage para persistencia
@@ -475,7 +476,8 @@ export function LoginAndRegister() {
         <MainApp 
           initialUser={{
             cedula: loggedUser.cedula,
-            nombre: loggedUser.nombre
+            nombre: loggedUser.nombre,
+            comite_id: loggedUser.comite_id
           }}
         />
       ) : (

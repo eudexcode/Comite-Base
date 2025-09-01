@@ -1,0 +1,756 @@
+/* MiComite principal */
+.mi-comite {
+  margin-left: 0;
+  padding: 20px;
+  min-height: 100vh;
+  background: #f8fafc;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 60px;
+}
+
+/* Header del Comité */
+.comite-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.comite-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.comite-header p {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Tarjeta de información del comité */
+.comite-info-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.comite-info-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.comite-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.comite-avatar span {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+
+.comite-details h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.comite-zone {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0 0 12px 0;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.comite-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comite-contact span {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.comite-info-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.status-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.inactive {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.comite-date {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Tarjeta del secretario */
+.secretario-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.secretario-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.secretario-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.secretario-avatar {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.secretario-avatar span {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+.secretario-details h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.secretario-contact,
+.secretario-address {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 2px 0;
+}
+
+/* Grid de estadísticas del comité */
+.comite-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.stat-change {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Sección de miembros */
+.miembros-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.miembros-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.miembros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.miembro-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.miembro-card:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.miembro-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.miembro-avatar span {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.miembro-info {
+  flex: 1;
+}
+
+.miembro-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.miembro-role {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 4px 0;
+  padding: 2px 8px;
+  background: #e2e8f0;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.miembro-contact,
+.miembro-sector {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 2px 0;
+}
+
+/* Información adicional */
+.comite-additional-info {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comite-additional-info h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.info-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item p {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Contenedores de error y sin datos */
+.error-container,
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-icon,
+.no-data-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.error-container h2,
+.no-data-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.error-container p,
+.no-data-container p {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0 0 24px 0;
+}
+
+.error-container button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.error-container button:hover {
+  background: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .mi-comite {
+    padding: 16px;
+    margin-top: 35px;
+  }
+
+  .comite-header h1 {
+    font-size: 28px;
+  }
+
+  .comite-info-card {
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .comite-info-right {
+    align-items: flex-start;
+  }
+
+  .comite-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .miembros-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .mi-comite {
+    padding: 12px;
+    margin-top: 30px;
+  }
+
+  .comite-header {
+    margin-bottom: 16px;
+  }
+
+  .comite-header h1 {
+    font-size: 24px;
+  }
+
+  .comite-header p {
+    font-size: 14px;
+  }
+
+  .comite-info-card {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .comite-info-left {
+    gap: 16px;
+  }
+
+  .comite-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .comite-avatar span {
+    font-size: 24px;
+  }
+
+  .comite-details h3 {
+    font-size: 20px;
+  }
+
+  .secretario-card {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .secretario-card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .secretario-info {
+    gap: 12px;
+  }
+
+  .secretario-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .secretario-avatar span {
+    font-size: 20px;
+  }
+
+  .comite-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .stat-content h3 {
+    font-size: 12px;
+  }
+
+  .stat-number {
+    font-size: 20px;
+  }
+
+  .miembros-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .miembros-section h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .miembros-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .miembro-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .miembro-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .miembro-avatar span {
+    font-size: 16px;
+  }
+
+  .miembro-info h4 {
+    font-size: 14px;
+  }
+
+  .comite-additional-info {
+    padding: 16px;
+  }
+
+  .comite-additional-info h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .info-item {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mi-comite {
+    padding: 8px;
+    margin-top: 25px;
+  }
+
+  .comite-header h1 {
+    font-size: 20px;
+  }
+
+  .comite-header p {
+    font-size: 12px;
+  }
+
+  .comite-info-card {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .comite-info-left {
+    gap: 12px;
+  }
+
+  .comite-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .comite-avatar span {
+    font-size: 20px;
+  }
+
+  .comite-details h3 {
+    font-size: 18px;
+  }
+
+  .comite-zone {
+    font-size: 14px;
+  }
+
+  .comite-contact span {
+    font-size: 12px;
+  }
+
+  .secretario-card {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .secretario-card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .secretario-info {
+    gap: 10px;
+  }
+
+  .secretario-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .secretario-avatar span {
+    font-size: 18px;
+  }
+
+  .secretario-details h3 {
+    font-size: 16px;
+  }
+
+  .secretario-contact,
+  .secretario-address {
+    font-size: 12px;
+  }
+
+  .comite-stats-grid {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .stat-card {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .stat-content h3 {
+    font-size: 11px;
+  }
+
+  .stat-number {
+    font-size: 18px;
+  }
+
+  .stat-change {
+    font-size: 10px;
+  }
+
+  .miembros-section {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .miembros-section h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .miembros-grid {
+    gap: 8px;
+  }
+
+  .miembro-card {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .miembro-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .miembro-avatar span {
+    font-size: 14px;
+  }
+
+  .miembro-info h4 {
+    font-size: 13px;
+  }
+
+  .miembro-role {
+    font-size: 10px;
+  }
+
+  .miembro-contact,
+  .miembro-sector {
+    font-size: 10px;
+  }
+
+  .comite-additional-info {
+    padding: 12px;
+  }
+
+  .comite-additional-info h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .info-grid {
+    gap: 8px;
+  }
+
+  .info-item {
+    padding: 10px;
+  }
+
+  .info-item h4 {
+    font-size: 12px;
+  }
+
+  .info-item p {
+    font-size: 14px;
+  }
+}
