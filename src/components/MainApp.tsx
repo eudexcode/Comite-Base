@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Sidebar } from "./Sidebar";
 import { Dashboard } from "./Dashboard";
 import { MiComite } from "./MiComite";
+import { TodosLosComites } from "./TodosLosComites";
 import "../style/MainApp.css";
 
 interface LoggedUser {
@@ -81,12 +82,7 @@ export function MainApp({ initialUser }: MainAppProps) {
       case "comites-mi-comite":
         return <MiComite comiteId={loggedUser?.comite_id} />;
       case "comites-todos":
-        return (
-          <div className="content-placeholder">
-            <h1>Todos los Comités</h1>
-            <p>Aquí se mostrará la lista de todos los comités disponibles.</p>
-          </div>
-        );
+        return <TodosLosComites />;
       default:
         return <Dashboard userCedula={loggedUser?.cedula} />;
     }
