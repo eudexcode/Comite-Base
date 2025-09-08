@@ -39,6 +39,25 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
   width: 100%;
+  display: block;
+  padding: 0;
+  align-self: stretch;
+}
+
+/* Forzar que el primer hijo (vista) ocupe todo el ancho del main-content */
+.main-content > * {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Asegurar vistas a 100% de ancho en responsive */
+.main-content .dashboard,
+.main-content .mi-comite,
+.main-content .todos-los-comites {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 /* Content Placeholder */

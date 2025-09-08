@@ -463,12 +463,12 @@ export function LoginAndRegister() {
     const checkAuthAndLoading = async () => {
       console.log('Iniciando loading...');
       setIsLoading(true);
-      
-      // Simular un delay para mostrar el loading
-      console.log('Esperando 10 segundos...');
-      await new Promise(resolve => setTimeout(resolve, 10000));
+
+      // Delay breve para mostrar el loader sin bloquear
+      console.log('Esperando 1 segundo...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
       console.log('Delay completado');
-      
+
       const savedUser = localStorage.getItem('loggedUser');
       if (savedUser) {
         try {
@@ -486,7 +486,7 @@ export function LoginAndRegister() {
       console.log('Finalizando loading...');
       setIsLoading(false);
     };
-    
+
     checkAuthAndLoading();
   }, []);
 
@@ -615,7 +615,7 @@ export function LoginAndRegister() {
                   onChange={inputChangeValue}
                   required
                   style={{
-                    border: "2px solid #E39E41",
+                    border: "2px solid #00478e",
                     borderRadius: "10px",
                     padding: "10px",
                     outline: "none",
@@ -630,7 +630,7 @@ export function LoginAndRegister() {
                 </select>
                 <button
                   type="submit"
-                  className="mt-3 cursor-pointer bg-[#e39e41]"
+                  className="mt-3 cursor-pointer bg-[#00478e]"
                   disabled={isSubmitting}
                   onClick={handleSubmit}
                 >
@@ -656,8 +656,19 @@ export function LoginAndRegister() {
                     onChange={handleCedulaChange}
                     required
                     pattern="[0-9]{3}-[0-9]{7}-[0-9]"
-                    className={loginError ? "input-error" : ""}
+                    className={loginError ? "input-error input-with-icon" : "input-with-icon"}
                   />
+                  {!loginError && (
+                    <span className="input-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-id-card" aria-hidden="true">
+                        <path d="M16 10h2"></path>
+                        <path d="M16 14h2"></path>
+                        <path d="M6.17 15a3 3 0 0 1 5.66 0"></path>
+                        <circle cx="9" cy="11" r="2"></circle>
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                      </svg>
+                    </span>
+                  )}
                   {loginError && <span className="error-icon">!</span>}
                 </div>
                 <button
@@ -675,20 +686,24 @@ export function LoginAndRegister() {
           <div className="overlay-container">
             <div className="overlay">
               <div className="overlay-panel overlay-left">
-                  <button
-                    className="ghost cursor-pointer mt-70 ml-40"
-                    onClick={() => setIsSignUp(false)}
-                  >
-                    Iniciar sesión
-                  </button>
+                  {isSignUp && (
+                    <button
+                      className="ghost cursor-pointer mt-70 ml-40"
+                      onClick={() => setIsSignUp(false)}
+                    >
+                      Iniciar sesión
+                    </button>
+                  )}
               </div>
               <div className="overlay-panel overlay-right ">
-                  <button
-                    className="ghost cursor-pointer mt-105 ml-40"
-                    onClick={() => setIsSignUp(true)}
-                  >
-                    Registrarme
-                  </button>
+                  {!isSignUp && (
+                    <button
+                      className="ghost cursor-pointer mt-105 ml-40"
+                      onClick={() => setIsSignUp(true)}
+                    >
+                      Registrarme
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

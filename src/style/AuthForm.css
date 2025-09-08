@@ -10,6 +10,15 @@
 	align-items: center;
 	min-height: 100vh;
 	background: #f6f5f7;
+	width: 100% !important;
+	max-width: none !important;
+	box-sizing: border-box !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	
+/* 	overflow-y: hidden !important;
+	overflow-x: hidden !important; */
 }
 
 body {
@@ -420,6 +429,35 @@ footer a {
 	animation: errorBounce 0.3s ease-out;
 }
 
+/* Icono a la derecha dentro del input del login */
+.input-with-icon {
+	padding-right: 44px; /* espacio para el icono */
+}
+.input-icon {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #9ca3af; /* gris suave */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.input-icon svg {
+	width: 20px;
+	height: 20px;
+}
+
+/* Borde azul para el input de login */
+input.input-with-icon {
+	border: 2px solid #00478e;
+}
+input.input-with-icon:focus {
+	border: 2px solid #00478e;
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(0,71,142,0.15);
+}
+
 @keyframes shake {
 	0%, 100% {
 		transform: translateX(0);
@@ -554,5 +592,134 @@ footer a {
 	100% {
 		transform: scale(1);
 		opacity: 1;
+	}
+}
+
+/* Responsive: diseño móvil distinto para login/register */
+@media (max-width: 768px) {
+	/* Fondo del cuerpo en móvil y padding general */
+	.auth-wrapper {
+		/* Radial: centro blanco circular y alrededor azul */
+		background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.98) 22%, #eaf1fb 38%, #2f6fbf 58%, #0b2d5e 100%);
+		min-height: 100vh;
+		padding: 16px;
+		
+	}
+	/* Contenedor sin bordes/redondeos exagerados y sin sombra para ocupar todo */
+	.container {
+		width: 92%;
+		max-width: 420px;
+		min-height: auto;
+		border-radius: 16px;
+		box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+		padding-bottom: 20px;
+		margin: 24px auto;
+		overflow: hidden;
+		background: #ffffff;
+		border: 0;
+		outline: none;
+	}
+
+	/* Formularios en flujo normal y a ancho completo */
+	.form-container {
+		position: relative;
+		top: auto;
+		left: auto;
+		height: auto;
+		width: 100%;
+		transition: none;
+	}
+	.sign-in-container,
+	.sign-up-container {
+		width: 100%;
+		opacity: 1;
+	}
+	/* Desactivar animaciones/transformaciones del desktop */
+	.container.right-panel-active .sign-in-container,
+	.container.right-panel-active .sign-up-container {
+		transform: none;
+	}
+
+	/* Mostrar solo un formulario a la vez */
+	.sign-up-container { display: none; }
+	.container.right-panel-active .sign-in-container { display: none; }
+	.container.right-panel-active .sign-up-container { display: block; }
+
+	/* Overlay se convierte en un switch superior compacto */
+	.overlay-container {
+		position: relative;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: auto;
+		transform: none !important;
+		z-index: 1;
+	}
+	.overlay {
+		left: 0;
+		width: 100%;
+		height: auto;
+		transform: none !important;
+		background: transparent !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		padding: 8px 0 0;
+		margin-bottom: 14px;
+		border-radius: 0;
+		box-shadow: none;
+		position: static;
+		top: auto;
+		z-index: 1;
+	}
+	.overlay-panel,
+	.overlay-left,
+	.overlay-right {
+		position: static;
+		width: auto;
+		height: auto;
+		transform: none !important;
+		background: none !important;
+	}
+	/* Botones del switch sobre tarjeta blanca */
+	.overlay-panel button,
+	.overlay-panel .ghost {
+		margin: 0 !important;
+		padding: 8px 14px;
+		border: 1px solid #00478e;
+		color: #00478e;
+		background: transparent;
+		border-radius: 999px;
+		transition: all 0.2s ease;
+	}
+	.overlay-panel button:hover { 
+		transform: translateY(-1px); 
+		box-shadow: 0 6px 14px rgba(0,0,0,0.10);
+	}
+	/* Activo: botón lleno en azul */
+	.container:not(.right-panel-active) .overlay .overlay-left button {
+		background: #00478e;
+		color: #ffffff;
+		border-color: #00478e;
+	}
+	.container.right-panel-active .overlay .overlay-right button {
+		background: #00478e;
+		color: #ffffff;
+		border-color: #00478e;
+	}
+
+	/* Ajustar padding del formulario para móvil */
+	form { padding: 16px; }
+	/* Más estilo en el cuerpo */
+	.container { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); }
+	form h1 { color: #0f172a; }
+	input { background-color: #f3f4f6; }
+	button.mt-3 { box-shadow: 0 10px 18px rgba(0,71,142,0.25); }
+	/* Separar botón inferior del borde del card */
+	.overlay + .form-container button.mt-3,
+	.sign-in-container button.mt-3,
+	.sign-up-container button.mt-3 {
+		margin-bottom: 4px;
 	}
 }
