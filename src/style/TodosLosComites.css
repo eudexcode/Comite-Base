@@ -14,7 +14,7 @@ html, body {
  */
 /* TodosLosComites.css */
 .todos-los-comites {
-  padding: 2rem;
+  padding: 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   width: 100%;
@@ -157,9 +157,9 @@ html, body {
 .table-header {
   background: #f8fafc;
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 1fr 1fr;
   gap: 1rem;
-  padding: 0;
+  padding: 0 16px;
   border-bottom: 1px solid #e5e7eb;
   font-weight: 600;
   color: #374151;
@@ -223,9 +223,9 @@ html, body {
 
 .table-row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: minmax(220px, 2fr) 1fr 1.2fr 1fr 1fr;
   gap: 1rem;
-  padding: 0;
+  padding: 0 16px;
   border-bottom: 1px solid #f3f4f6;
   transition: all 0.2s ease;
   align-items: stretch;
@@ -336,8 +336,7 @@ html, body {
   align-items: center;
   justify-content: center;
   min-width: 80px;
-  width: fit-content;
-  margin: 0 auto;
+  width: auto;
 }
 
 .status-badge.active {

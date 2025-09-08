@@ -347,7 +347,7 @@ export function Dashboard({ userCedula }: DashboardProps) {
             {isEditing ? "Guardar Cambios" : "Editar Perfil"}
           </button>
           {isEditing && (
-            <button className="cancel-edit-btn" onClick={handleEditToggle}>
+            <button className="cancel-edit-btn mr-12" onClick={handleEditToggle}>
               ❌ Cancelar
             </button>
           )}

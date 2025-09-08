@@ -239,18 +239,46 @@ export function LoginAndRegister() {
         const result = await response.json();
         console.log("Miembro registrado exitosamente:", result);
 
-        // Mostrar notificación de éxito
+        // Mostrar notificación de éxito y luego pantalla de carga
         setShowSuccess(true);
+        setIsLoading(true);
 
-        // Limpiar formulario
-        setMember(initialMember);
-        setErrors({});
-
-        // Después de 2 segundos, cambiar a login y ocultar notificación
-        setTimeout(() => {
+        // Esperar 3 segundos mostrando la pantalla de carga y luego iniciar sesión automáticamente
+        setTimeout(async () => {
           setShowSuccess(false);
-          setIsSignUp(false);
-        }, 2000);
+          try {
+            const autoCedula = memberData.cedula; // usamos la cédula registrada
+            const loginResponse = await fetch(
+              `${appSettings.apiUrl}/Members/byCedula/${autoCedula}`
+            );
+
+            if (loginResponse.ok) {
+              const memberDataLogin = await loginResponse.json();
+              const userToSave = {
+                cedula: memberDataLogin.cedula,
+                nombre: memberDataLogin.nombre,
+                comite_id: memberDataLogin.comite_id,
+              };
+
+              // Guardar sesión
+              localStorage.setItem("loggedUser", JSON.stringify(userToSave));
+              setLoggedUser(userToSave);
+              setIsAuthenticated(true);
+
+              // Limpiar formulario
+              setMember(initialMember);
+              setErrors({});
+            } else {
+              // Si falla, volver a login manual
+              setIsSignUp(false);
+            }
+          } catch (e) {
+            console.error("Error en login automático tras registro:", e);
+            setIsSignUp(false);
+          } finally {
+            setIsLoading(false);
+          }
+        }, 3000);
       } else {
         const errorData = await response.json();
         console.error("Error en el servidor:", errorData);
@@ -648,7 +676,7 @@ export function LoginAndRegister() {
             <div className="overlay">
               <div className="overlay-panel overlay-left">
                   <button
-                    className="ghost cursor-pointer mt-24"
+                    className="ghost cursor-pointer mt-70 ml-40"
                     onClick={() => setIsSignUp(false)}
                   >
                     Iniciar sesión
@@ -656,7 +684,7 @@ export function LoginAndRegister() {
               </div>
               <div className="overlay-panel overlay-right ">
                   <button
-                    className="ghost cursor-pointer mt-80"
+                    className="ghost cursor-pointer mt-105 ml-40"
                     onClick={() => setIsSignUp(true)}
                   >
                     Registrarme

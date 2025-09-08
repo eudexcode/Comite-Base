@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+/* Global reset to remove default page margins and horizontal scroll */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure main containers expand full width on large monitors */
+.main-app, .main-content {
+  width: 100%;
+  max-width: none;
+}
