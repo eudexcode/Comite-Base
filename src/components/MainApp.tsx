@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sidebar } from "./Sidebar";
+import { Navbar } from "./Navbar";
 import { Dashboard } from "./Dashboard";
 import { MiComite } from "./MiComite";
 import { TodosLosComites } from "./TodosLosComites";
@@ -18,27 +18,7 @@ interface MainAppProps {
 export function MainApp({ initialUser }: MainAppProps) {
   const [activeRoute, setActiveRoute] = useState("dashboard");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [loggedUser, setLoggedUser] = useState<LoggedUser | null>(initialUser);
-
-  // Detectar tamaño de pantalla y colapsar sidebar en móvil
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsSidebarCollapsed(true);
-      } else {
-        setIsSidebarCollapsed(false);
-      }
-    };
-
-    // Ejecutar al montar
-    handleResize();
-
-    // Escuchar cambios de tamaño
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   // Usar el usuario inicial pasado como prop (solo si cambia)
   useEffect(() => {
@@ -51,11 +31,6 @@ export function MainApp({ initialUser }: MainAppProps) {
 
   const handleNavigation = (route: string) => {
     setActiveRoute(route);
-    
-    // En móvil, colapsar sidebar después de navegar
-    if (window.innerWidth <= 768) {
-      setIsSidebarCollapsed(true);
-    }
   };
 
   const handleLogout = () => {
@@ -70,9 +45,6 @@ export function MainApp({ initialUser }: MainAppProps) {
     window.location.href = "/";
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
-  };
 
   const renderContent = () => {
     
@@ -94,21 +66,14 @@ export function MainApp({ initialUser }: MainAppProps) {
 
   return (
     <div className="main-app">
-      <Sidebar 
+      <Navbar 
         onNavigate={handleNavigation}
         activeRoute={activeRoute}
         onLogout={handleLogout}
-        isCollapsed={isSidebarCollapsed}
-        onToggle={toggleSidebar}
       />
-      <main className={`main-content ${isSidebarCollapsed ? "sidebar-collapsed" : ""}`}>
+      <main className="main-content">
         {renderContent()}
       </main>
-      
-      {/* Overlay para móvil cuando sidebar está abierta */}
-      {!isSidebarCollapsed && window.innerWidth <= 768 && (
-        <div className="sidebar-overlay" onClick={() => setIsSidebarCollapsed(true)} />
-      )}
     </div>
   );
 } 

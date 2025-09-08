@@ -161,10 +161,6 @@ export function TodosLosComites() {
         </div>
         
         <div className="actions-section">
-          <button className="filters-btn">
-            <span className="filter-icon">🔽</span>
-            FILTROS
-          </button>
           <button className="new-comite-btn">
             <span className="plus-icon">+</span>
             NUEVO COMITÉ

@@ -1,0 +1,430 @@
+/* Navbar principal */
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  overflow: visible;
+}
+
+
+/* Brand del navbar */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 56px;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Menú del navbar */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: auto;
+  padding: 0;
+  margin-left: auto;
+}
+
+/* Items del navbar */
+.navbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 8px;
+  gap: 8px;
+  height: 56px;
+}
+
+.navbar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Item activo */
+.navbar-item.active {
+/*   background: linear-gradient(135deg, white 0%, #1e40af 100%); */
+  background: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.navbar-item.active .navbar-text {
+    color: #3b82f6;
+}
+
+.navbar-item .navbar-text.son {
+    color: #3b82f6;
+}
+
+
+
+
+.navbar-item.member-header.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.navbar-item.accordion-header.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+/* Iconos del navbar */
+.navbar-icon {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.comites-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comites-icon svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Texto del navbar */
+.navbar-text {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+/* Comités - Dropdown en Desktop, Acordeón en Responsive */
+.navbar-accordion {
+  position: relative;
+}
+
+.accordion-header {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+  transform: translateY(-2px);
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+  color: white;
+  font-size: 14px;
+}
+
+.accordion-arrow.open {
+  transform: rotate(180deg);
+}
+
+.accordion-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Dropdown en Desktop */
+.accordion-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  margin-top: 4px;
+  z-index: 1001;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 200px;
+  opacity: 10;
+  visibility: visible;
+  background: white;
+}
+
+.accordion-item {
+  padding: 12px 16px;
+  margin: 0;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.accordion-item:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: white;
+}
+
+.accordion-item.active {
+  background: rgba(245, 158, 11, 0.15);
+  color: white;
+}
+
+
+/* Item de logout */
+.logout-item {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.logout-item:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menú hamburguesa */
+.mobile-menu-toggle {
+  display: none;
+  cursor: pointer;
+  padding: 8px;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1002;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 70px;
+    padding: 0 16px;
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar-title {
+    font-size: 20px;
+  }
+  
+  /* Mostrar menú hamburguesa en móvil */
+  .mobile-menu-toggle {
+    display: flex;
+    right: 16px;
+  }
+  
+  /* Ocultar menú normal en móvil */
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  .navbar-menu.mobile-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Acordeón en móvil - cambiar de dropdown a acordeón */
+  .navbar-accordion {
+    width: 100%;
+  }
+  
+  .accordion-content {
+    position: static;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+    box-shadow: none;
+    animation: none;
+    margin-top: 0;
+  }
+  
+  .accordion-item {
+    padding: 16px 20px;
+    margin-left: 20px;
+    border-left: 3px solid transparent;
+  }
+  
+/*   .accordion-item:hover {
+    border-left-color: rgba(245, 158, 11, 0.5);
+  }
+  
+  .accordion-item.active {
+    border-left-color: #f59e0b;
+  }
+   */
+  .navbar-item {
+    width: 100%;
+    padding: 16px 20px;
+    margin: 4px 0;
+    justify-content: flex-start;
+    border-radius: 8px;
+  }
+  
+  .navbar-text {
+    font-size: 16px;
+  }
+  
+  .navbar-icon {
+    font-size: 20px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    min-height: 60px;
+    padding: 0 12px;
+  }
+  
+  .navbar-logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .navbar-title {
+    font-size: 18px;
+  }
+  
+  .mobile-menu-toggle {
+    right: 12px;
+    display: flex;
+  }
+
+  .navbar-menu {
+    top: 60px;
+    padding: 16px;
+  }
+  
+  .navbar-item {
+    padding: 14px 16px;
+  }
+  
+  .navbar-text {
+    font-size: 15px;
+  }
+  
+  .navbar-icon {
+    font-size: 18px;
+  }
+  
+}

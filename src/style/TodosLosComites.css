@@ -1,5 +1,5 @@
 /* Global styles to remove margins */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ html, body {
   width: 100%;
   height: 100%;
 }
-
+ */
 /* TodosLosComites.css */
 .todos-los-comites {
   padding: 2rem;
@@ -20,6 +20,18 @@ html, body {
   width: 100%;
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-top: 80px;
+  max-width: none;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Expandir contenido para usar todo el ancho disponible */
+.todos-los-comites .control-panel,
+.todos-los-comites .comites-table-container,
+.todos-los-comites .comites-header {
+  max-width: none;
+  width: 100%;
 }
 
 /* Header */
@@ -97,29 +109,10 @@ html, body {
   align-items: center;
 }
 
-.filters-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: #f3f4f6;
-  border: none;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  color: #374151;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
-}
 
-.filters-btn:hover {
-  background: #e5e7eb;
-  transform: translateY(-1px);
-}
 
-.filter-icon {
-  font-size: 0.9rem;
-}
+
+
 
 .new-comite-btn {
   display: flex;
@@ -166,18 +159,22 @@ html, body {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
   gap: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 0;
   border-bottom: 1px solid #e5e7eb;
   font-weight: 600;
   color: #374151;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  align-items: stretch;
+  min-height: 60px;
 }
 
 .header-cell {
   display: flex;
   align-items: center;
+  min-height: 60px;
+  padding: 1rem 1.5rem;
 }
 
 /* All headers aligned to the left by default */
@@ -189,21 +186,33 @@ html, body {
 
 .table-header .header-cell:nth-child(4) {
   justify-content: flex-start;
+  
 }
 
 /* All content aligned to the left by default */
-.table-row .table-cell {
-  justify-content: flex-start;
+.table-row {
+  padding-right: 4rem;
 }
 
 /* Center specific content */
+.table-row .table-cell:nth-child(1) {
+  justify-content: flex-start;
+  padding-right: 2rem;
+}
+
 .table-row .table-cell:nth-child(3) {
   justify-content: center;
-  margin-right: 2rem;
+  padding-right: 4rem;
 }
 
 .table-row .table-cell:nth-child(4) {
-  margin-right: 4rem;
+  justify-content: flex-start;
+  padding-right: 2rem;
+}
+
+.table-row .table-cell:nth-child(5) {
+  justify-content: flex-start;
+  padding-right: 3.5rem;
 }
 
 /* Table Body */
@@ -216,10 +225,11 @@ html, body {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
   gap: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 0;
   border-bottom: 1px solid #f3f4f6;
   transition: all 0.2s ease;
-  align-items: center;
+  align-items: stretch;
+  min-height: 60px;
 }
 
 .table-row:hover {
@@ -238,11 +248,14 @@ html, body {
   font-size: 0.9rem;
   color: #374151;
   justify-content: flex-start;
+  min-height: 60px;
+  padding: 1rem 1.5rem;
 }
 
 /* All content aligned to the left */
 .table-row .table-cell {
   justify-content: flex-start;
+  padding-right: 4rem;
 }
 
 /* Comité Name */
@@ -275,6 +288,10 @@ html, body {
 .comite-zone {
   color: #6b7280;
   font-weight: 500;
+  padding: 4px 12px;
+  background: #6b7280;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 /* Members Count */
@@ -326,11 +343,15 @@ html, body {
 .status-badge.active {
   background: #dcfce7;
   color: #166534;
+  padding-right: 3rem;
+  padding-left: 3rem;
 }
 
 .status-badge.inactive {
   background: #fef2f2;
   color: #dc2626;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 /* Date Info */
@@ -359,12 +380,12 @@ html, body {
 /* Action Buttons */
 .action-buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 2px;
 }
 
 .action-btn {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -375,27 +396,27 @@ html, body {
   font-size: 0.9rem;
 }
 
-.edit-btn {
+/* .edit-btn {
   background: #f0f9ff;
   color: #0ea5e9;
-}
+} */
 
-.edit-btn:hover {
+/* .edit-btn:hover {
   background: #0ea5e9;
   color: white;
   transform: scale(1.1);
-}
+} */
 
-.delete-btn {
+/* .delete-btn {
   background: #fef2f2;
   color: #ef4444;
-}
+} */
 
-.delete-btn:hover {
+/* .delete-btn:hover {
   background: #ef4444;
   color: white;
   transform: scale(1.1);
-}
+} */
 
 /* Empty State */
 .empty-state {
@@ -504,7 +525,6 @@ html, body {
     padding: 1rem 1rem 1rem 3rem;
   }
   
-  .filters-btn,
   .new-comite-btn {
     padding: 1rem 1.5rem;
     font-size: 1rem;
@@ -549,6 +569,7 @@ html, body {
 @media (max-width: 768px) and (min-width: 577px) {
   .todos-los-comites {
     padding: 1.5rem;
+    margin-top: 70px;
   }
   
   .comites-header {
@@ -585,7 +606,6 @@ html, body {
     padding: 0.8rem 0.8rem 0.8rem 2.5rem;
   }
   
-  .filters-btn,
   .new-comite-btn {
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
@@ -641,6 +661,7 @@ html, body {
 @media (max-width: 576px) {
   .todos-los-comites {
     padding: 1rem;
+    margin-top: 20px;
   }
   
   .comites-header {
@@ -676,7 +697,6 @@ html, body {
     padding: 0.7rem 0.7rem 0.7rem 2.2rem;
   }
   
-  .filters-btn,
   .new-comite-btn {
     padding: 0.7rem 1rem;
     font-size: 0.85rem;
@@ -822,7 +842,6 @@ html, body {
     min-height: 44px;
   }
   
-  .filters-btn,
   .new-comite-btn {
     min-height: 44px;
   }
@@ -882,7 +901,6 @@ html, body {
     transform: none;
   }
   
-  .filters-btn:hover,
   .new-comite-btn:hover {
     transform: none;
   }
@@ -918,11 +936,6 @@ html, body {
   
   .search-input::placeholder {
     color: #94a3b8;
-  }
-  
-  .filters-btn {
-    background: #334155;
-    color: #e2e8f0;
   }
   
   .new-comite-btn {
@@ -966,15 +979,15 @@ html, body {
     color: #fca5a5;
   }
   
-  .action-btn.edit-btn {
+/*   .action-btn.edit-btn {
     background: #1e3a8a;
     color: #60a5fa;
-  }
+  } */
   
-  .action-btn.delete-btn {
+/*   .action-btn.delete-btn {
     background: #7f1d1d;
     color: #fca5a5;
-  }
+  } */
   
   .empty-state,
   .error-container {

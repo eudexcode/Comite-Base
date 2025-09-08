@@ -517,7 +517,10 @@ export function LoginAndRegister() {
           >
           {/* Sign Up */}
           <div className="form-container sign-up-container">
-            <form>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}>
                 <h1 className="text-2xl font-bold">Registro</h1>
                 <input
                   name="nombre"
